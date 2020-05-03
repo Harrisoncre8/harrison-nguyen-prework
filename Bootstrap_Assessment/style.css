@@ -1,0 +1,70 @@
+/* default styling for body page */
+body {
+  background-color: #79B9C6;
+  font-family: Arial;
+  margin: 0;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* styling for children elements of centerDiv */
+.centerDiv {
+  text-align: center;
+}
+
+/* styling for FDM logo */
+.logoDiv {
+  font-weight: bold;
+  position:absolute;
+  left:0;
+  top:0;
+}
+
+/* styling for motto */
+.mottoDiv {
+  color: #000000;
+  font-size: small;
+  left: 0;
+  line-height: 200px;
+  margin-top: -100px;
+  position: absolute;
+  text-align: center;
+  top: 35%;
+  width: 100%;
+}
+
+/* styling for Digital Heaven title */
+.titleDiv {
+  font-weight: bold;
+  font-size: 60px;
+  left: 0;
+  line-height: 200px;
+  margin-top: -100px;
+  position: absolute;
+  text-align: center;
+  top: 45%;
+  width: 100%;
+}
+
+/* positioning for button */
+.btnDiv {
+  left: 0;
+  line-height: 200px;
+  margin-top: -100px;
+  position: absolute;
+  text-align: center;
+  top: 57%;
+  width: 100%;
+}
+
+/* styling for button */
+#quoteBtn {
+  background-color: #79B9C6;
+  border-radius: 1px 1px 1px 1px;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  cursor: pointer;
+  line-height: 20px;
+}
+
