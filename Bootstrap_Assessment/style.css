@@ -3,6 +3,7 @@ body {
   background-color: #79B9C6;
   font-family: Arial;
   color: #ffffff;
+  text-transform: uppercase;
 }
 
 .jumbotron {
