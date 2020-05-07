@@ -1,0 +1,13 @@
+.navbar-brand {
+  background-color: #4aaaa5;
+}
+
+nav {
+  background-color: #ffffff;
+}
+
+/* Viewport */
+@media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 480px) {
+}

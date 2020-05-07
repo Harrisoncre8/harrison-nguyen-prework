@@ -10,14 +10,39 @@
 </head>
 <body>
   <!-- navigation menu -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-primary" role="navigation">
-    <a class="navbar-brand">Harrison Nguyen</a>
-      <div class="navbar-nav">
-        <a class="nav-item nav-link" href="#">About</a>
-        <a class="nav-item nav-link active" href="#">Portfolio</a>
-        <a class="nav-item nav-link" href="#">Contact</a>
+  <nav class="navbar navbar-expand-sm navbar-light container-fluid" style="max-width: 960px;">
+      <a class="navbar-brand" href="#">Harrison Nguyen</a>
+      <!-- on small screens, nav links will collapse to toggle button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">About<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-link" style="color:darkgrey;"> | </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Portfolio</a>
+          </li>
+          <li class="nav-link" style="color:darkgrey;"> | </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
       </div>
   </nav>
+
+  <!-- <div class="container">
+    <nav class="navbar navbar-expand-sm navbar-light d-flex row" role="navigation">
+      <a class="navbar-brand mr-auto p-2">Harrison Nguyen</a>
+      <div class="navbar-nav col-4">
+        <a class="nav-item nav-link p-2" href="#">About</a>
+        <a class="nav-item nav-link active p-2" href="#">Portfolio</a>
+        <a class="nav-item nav-link p-2" href="#">Contact</a>
+      </div>
+    </nav>
+  </div> -->
   <!-- portfolio image grid -->
   <div class="container">
     <!-- images in row 1 -->
