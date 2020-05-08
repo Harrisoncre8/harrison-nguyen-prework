@@ -1,14 +1,22 @@
 body {
  background-image: url("../images/photography.png"); 
+ font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;;
 }
 
-.navbar-brand {
-  background-color: #4aaaa5;
+h3 {
+  font-family: 'Georgia', Times, Times New Roman, serif;
+}
+
+.navbar {
+  padding: 0px;
+  height: 50px;
 }
 
 nav {
   background-color: #ffffff;
+  font-family: 'Georgia', Times, Times New Roman, serif;
 }
+
 /* Viewport */
 @media screen and (max-width: 768px) {
 }
