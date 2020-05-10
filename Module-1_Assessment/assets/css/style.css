@@ -5,6 +5,8 @@ body {
 
 h3 {
   font-family: 'Georgia', Times, Times New Roman, serif;
+  color: #4aaaa5;
+  font-weight: 550;
 }
 
 .navbar {
@@ -14,7 +16,7 @@ h3 {
 
 nav {
   background-color: #ffffff;
-  font-family: 'Georgia', Times, Times New Roman, serif;
+  font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;;
 }
 
 /* Viewport */
