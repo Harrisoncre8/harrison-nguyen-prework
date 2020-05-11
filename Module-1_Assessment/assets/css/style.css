@@ -2,7 +2,14 @@ body {
  background-image: url("../images/photography.png"); 
  font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
  color: #777777;
+ margin: 0 0 100px;
 }
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 
 h3 {
   font-family: 'Georgia', Times, Times New Roman, serif;
@@ -11,12 +18,14 @@ h3 {
 }
 
 footer {
-  position: sticky;
+  position: absolute;
+  bottom: 0;
   width: 100%;
   height: 50px;
   line-height: 50px;
   background-color: #666666;
   color: #ffffff;
+  border-top: 5px solid #4aaaa5;
 }
 
 .navbar {
