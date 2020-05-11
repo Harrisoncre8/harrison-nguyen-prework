@@ -13,7 +13,7 @@
   <nav class="navbar navbar-expand-lg navbar-light container-fluid" style="border: 1px solid #cccccc;">
     <div class="container col-6" style="max-width: 960px; padding: 0;">
       <div style="background-color: #4aaaa5; height: 50px;">
-        <h5 style="color: white; padding: 10px;" >Harrison Nguyen</h5>
+        <h5 style="color: white; padding: 10px;">Harrison Nguyen</h5>
       </div>
       <!-- on small screens, nav links will collapse to toggle button -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,27 +46,29 @@
       <!-- name input -->
       <div class="form-group">
         <label for="name">Name</label>
-        <input class="form-control" id="name" placeholder="John Smith">
+        <input class="form-control-sm w-100" 
+               style="border-radius: 0;" id="name" placeholder="John Smith">
       </div>
       <!-- email input -->
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="example@gmail.com">
+        <input type="email" class="form-control-sm w-100" 
+               style="border-radius: 0;" id="email" placeholder="example@gmail.com">
       </div>
       <!-- message input -->
       <div class="form-group">
         <label for="message">Message</label>
-        <textarea class="form-control" id="message" rows="5"></textarea>
+        <textarea class="form-control" style="border-radius: 0;" id="message" rows="5"></textarea>
       </div>
-      <button type="submit" class="btn" 
-              style="color: #ffffff; background-color: #4aaaa5;">Submit
+      <button type="submit" class="btn-sm pl-4 pr-4" 
+              style="color: #ffffff; background-color: #4aaaa5; border-radius: 0;">Submit
       </button>
   </div>
-<!-- footer -->
-<footer class="footer">
-  <div class="container text-center">
-    <span>Copyright ©</span>
-  </div>
-</footer>
+  <!-- footer -->
+  <footer class="footer">
+    <div class="container text-center">
+      <span>Copyright ©</span>
+    </div>
+  </footer>
 </body>
 </html>
