@@ -17,6 +17,11 @@ h3 {
   font-weight: 550;
 }
 
+h5 {
+  font-family: 'Georgia', Times, Times New Roman, serif;
+  font-weight: 550;
+}
+
 footer {
   position: absolute;
   bottom: 0;
@@ -26,6 +31,10 @@ footer {
   background-color: #666666;
   color: #ffffff;
   border-top: 5px solid #4aaaa5;
+}
+
+.form-group {
+  margin-bottom: 10px;
 }
 
 .navbar {
