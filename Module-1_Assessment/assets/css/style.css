@@ -10,7 +10,6 @@ html {
   min-height: 100%;
 }
 
-
 h3 {
   font-family: 'Georgia', Times, Times New Roman, serif;
   color: #4aaaa5;
@@ -20,6 +19,19 @@ h3 {
 h5 {
   font-family: 'Georgia', Times, Times New Roman, serif;
   font-weight: 550;
+}
+
+.figure-caption  {
+  background-color: #4aaaa5;
+  color: white;
+  width: 85.5%;
+  height: 40px;
+  line-height: 40px;
+  float: left;
+  position: absolute;
+  bottom: 15px;
+  font-family: 'Georgia', Times, Times New Roman, serif;
+  font-size: medium;
 }
 
 footer {
