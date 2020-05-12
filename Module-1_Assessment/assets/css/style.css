@@ -19,6 +19,8 @@ h3 {
 h5 {
   font-family: 'Georgia', Times, Times New Roman, serif;
   font-weight: 550;
+  color: #ffffff;
+  line-height: 45px
 }
 
 .figure-caption  {
@@ -63,5 +65,7 @@ nav {
 /* Viewport */
 @media screen and (max-width: 768px) {
 }
+
 @media screen and (max-width: 480px) {
 }
+
