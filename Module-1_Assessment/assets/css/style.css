@@ -1,3 +1,4 @@
+/* main content styling */
 body {
  background-image: url("../images/photography.png"); 
  font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
@@ -5,17 +6,20 @@ body {
  margin: 0 0 100px;
 }
 
+/* adjust body position and styling*/
 html {
   position: relative;
   min-height: 100%;
 }
 
+/* heading within main content */
 h3 {
   font-family: 'Georgia', Times, Times New Roman, serif;
   color: #4aaaa5;
   font-weight: 550;
 }
 
+/* heading within navbar */
 h5 {
   font-family: 'Georgia', Times, Times New Roman, serif;
   font-weight: 550;
@@ -23,6 +27,7 @@ h5 {
   line-height: 45px
 }
 
+/* image captions within portfolio page */
 .figure-caption  {
   background-color: #4aaaa5;
   color: white;
@@ -36,6 +41,7 @@ h5 {
   font-size: medium;
 }
 
+/* sticky footer */
 footer {
   position: absolute;
   bottom: 0;
@@ -47,25 +53,20 @@ footer {
   border-top: 5px solid #4aaaa5;
 }
 
+/* styling for contact form */
 .form-group {
   margin-bottom: 10px;
 }
 
+/* navbar positioning */
 .navbar {
   padding: 0px;
   height: 50px;
 }
 
+/* nav tag styling */
 nav {
   background-color: #ffffff;
   font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
   font-size: small;
 }
-
-/* Viewport */
-@media screen and (max-width: 768px) {
-}
-
-@media screen and (max-width: 480px) {
-}
-
