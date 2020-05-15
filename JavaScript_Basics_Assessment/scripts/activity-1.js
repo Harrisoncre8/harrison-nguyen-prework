@@ -15,8 +15,8 @@ let answer = 18/0;
 console.log(answer); // infinity
 
 // The sum of string 56 and string 92
-let sum = "56" +"92";
-console.log(sum); // "5692"
+let sum = '56' +'92';
+console.log(sum); // '5692'
 
 // Using any comparison operator you wish on the numbers 42 and 52, make it evaluate to false
 let untrue = 42 > 52;
