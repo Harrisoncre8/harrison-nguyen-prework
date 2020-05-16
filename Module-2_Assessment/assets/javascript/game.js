@@ -17,10 +17,19 @@ let snowmanGame = {
   // split the selected word into letters
   setLettersInWord: function(){
     this.lettersInWord = this.word.split('');
-  },  
+  },
+  // display underscores based on word length
+  setupRenderWord: function(){
+    let missingWord = '';
+    for(i=0; i<this.word.length; i++){
+      missingWord = missingWord + '_';
+    }
+    this.renderWord = missingWord;
+  },
   // method that starts the game
   playGame: function(){
     this.selectWord();
     this.setLettersInWord();
+    this.setupRenderWord();
   }
 }
