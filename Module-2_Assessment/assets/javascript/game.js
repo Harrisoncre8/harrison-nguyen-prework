@@ -8,23 +8,27 @@ let mistakeElement = document.querySelector('#guessRemain');
 let snowmanGame = {
   // list of words property, must be uppercase
   wordList: ['IGLOO', 'SNOWFLAKE', 'SLED', 'SCRAF', 'MITTEN', 'HAIL', 'OLAF', 'CHILLY'],
-  // the selected word is set here
-  word: '',
-  // letter or underscore is set here
-  renderWord: '',
-  // help to find index of letters of word
-  letterOfWord: [],
-  // incorrect guesses
-  lettersGuessed: [],
-  // whatever the user types in
-  userInput: '',
-  // amount of tries the user has attempted 
-  triesRemaining: 10,
-  // amount of words the user has solve is set here
-  wins: 0,
-
-  // selects random word from wordList and set it to word property
+  word: '',   // the selected word is set here
+  renderWord: '',   // letter or underscore is set here
+  letterOfWord: [],   // initial underscore word
+  lettersGuessed: [],   // keep track of letters used
+  userInput: '',   // set to the user's guess letter
+  triesRemaining: 10,   // amount of tries the user has attempted 
+  triesCorrect: 0,   // counter until win
+  wins: 0,   // amount of words the user has solve is set here
+  
+  // reset game
+  resetGame: function(){
+    this.renderWord = '';
+    this.letterOfWord = [];
+    this.lettersGuessed = [];
+    this.word = '';
+    this.triesCorrect = 0;
+    this.triesRemaining = 10;
+  },
+  // select random word from wordList and set it to word property
   selectWord: function(){
+    this.resetGame();
     this.word = this.wordList[ Math.floor(Math.random() * this.wordList.length) ];
     console.log(this.word);
   },
@@ -71,12 +75,18 @@ let snowmanGame = {
       let guessIndex = snowmanGame.letterOfWord.indexOf(snowmanGame.userInput);
       // if guess is correct, get rid of matched letter in letterOfWord array
       if(guessIndex >= 0){
+        // update tries correct
+        snowmanGame.triesCorrect ++;
+        console.log(snowmanGame.triesCorrect);
+        
+        // remove guess from letterOfWord array
         snowmanGame.letterOfWord.splice(guessIndex, 1);
         // get the index of the correct letter
         let index = snowmanGame.word.indexOf(snowmanGame.userInput);
         // call method to update the word on the DOM
         snowmanGame.updateRenderWord(index, snowmanGame.word, snowmanGame.renderWord);
         // check to see if game is won
+        snowmanGame.gameWonCheck();
       } else if(guessIndex === -1) {
         snowmanGame.updateMistake();
         // check if game lost
@@ -88,6 +98,13 @@ let snowmanGame = {
     snowmanGame.selectWord();
     snowmanGame.splitWord();
     snowmanGame.initialRenderWord();
+  },
+  gameWonCheck: function(){
+    if(this.triesCorrect === this.renderWord.length){
+      console.log('You win!');
+      // play music
+      snowmanGame.playGame();
+    }
   },
   // method to setup the snowman game and 
   // removes event listener after one user key click
