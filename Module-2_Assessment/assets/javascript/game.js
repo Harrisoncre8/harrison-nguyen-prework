@@ -65,11 +65,6 @@ let snowmanGame = {
     this.triesRemaining --;
     mistakeElement.innerText = this.triesRemaining;
   },
-  gameLoseCheck: function(){
-    // if(){
-
-    // }
-  },
   handleUserInput: function(event){
     // set keycode to code variable
     let code = event.keyCode;
@@ -110,6 +105,13 @@ let snowmanGame = {
       // play music
       snowmanGame.wins ++;
       winElement.innerText = snowmanGame.wins;
+      snowmanGame.playGame();
+    }
+  },
+  gameLoseCheck: function(){
+    if(this.triesRemaining === 0){
+      // play lose music
+      console.log('You lose!');
       snowmanGame.playGame();
     }
   },
