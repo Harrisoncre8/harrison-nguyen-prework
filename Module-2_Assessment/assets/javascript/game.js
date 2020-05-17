@@ -15,7 +15,6 @@ let snowmanGame = {
   lettersGuessed: [],   // keep track of letters used
   userInput: '',   // set to the user's guess letter
   triesRemaining: 10,   // amount of tries the user has attempted 
-  triesCorrect: 0,   // counter until win
   wins: 0,   // amount of words the user has solve is set here
   
   // reset game
@@ -24,7 +23,6 @@ let snowmanGame = {
     this.letterOfWord = [];
     this.lettersGuessed = [];
     this.word = '';
-    this.triesCorrect = 0;
     this.triesRemaining = 10;
   },
   // select random word from wordList and set it to word property
@@ -70,7 +68,6 @@ let snowmanGame = {
     }
     // render letters
     wordElement.innerText = this.renderWord;
-    console.log(this.renderWord.length);
   },
   // subtract from triesRemaining value and render
   updateMistake: function(){
@@ -97,8 +94,6 @@ let snowmanGame = {
       let guessIndex = snowmanGame.letterOfWord.indexOf(snowmanGame.userInput);
       // if guess is correct, get rid of matched letter in letterOfWord array
       if(guessIndex >= 0){
-        // update tries correct
-        snowmanGame.triesCorrect ++;  
         // remove guess from letterOfWord array
         snowmanGame.letterOfWord.splice(guessIndex, 1);
         // get the index of the correct letter
@@ -123,7 +118,7 @@ let snowmanGame = {
     snowmanGame.initialRenderWord();
   },
   gameWonCheck: function(){
-    if(this.triesCorrect === this.renderWord.length){
+    if(this.renderWord.indexOf('_') === -1){
       console.log('You win!');
       // play win music
       snowmanGame.wins ++;
