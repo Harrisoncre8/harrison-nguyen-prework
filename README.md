@@ -39,6 +39,7 @@ All of the projects within this reposity was built within 2 weeks time - culmina
 - CSS
 - Boostrap
 - JavaScript
+- HTML
 
 
 
