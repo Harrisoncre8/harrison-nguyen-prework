@@ -21,7 +21,6 @@ let snowmanGame = {
   // win/lose messeages to render on condition
   winMessage: 'Congrats! You built a snowman using the word ',
   loseMessage: 'Oh no! You melted the snowman with the word ',
-
   
   // reset game
   resetGame: function(){
@@ -125,18 +124,25 @@ let snowmanGame = {
     snowmanGame.initialRenderWord();
   },
   gameWonCheck: function(){
+    // check win condition based on underscore
     if(this.renderWord.indexOf('_') === -1){
       // play win music
+      document.getElementById("winSong").play();
+      // display win message to DOM
       snowmanGame.previousWord = snowmanGame.winMessage + snowmanGame.word;
       prevElement.innerText = snowmanGame.previousWord;
+      // add wins and disaply to DOM
       snowmanGame.wins ++;
       winElement.innerText = snowmanGame.wins;
       snowmanGame.playGame();
     }
   },
   gameLoseCheck: function(){
+    // check lose conditon based on how many tries are left for the user
     if(this.triesRemaining === 0){
       // play lose music
+      document.getElementById("loseSong").play();
+      // display lose message to DOM
       snowmanGame.previousWord = snowmanGame.loseMessage + snowmanGame.word;
       prevElement.innerText = snowmanGame.previousWord;
       snowmanGame.playGame();
