@@ -65,6 +65,14 @@ let snowmanGame = {
     this.triesRemaining --;
     mistakeElement.innerText = this.triesRemaining;
   },
+  checkGuessedLetter: function(){
+    if(snowmanGame.lettersGuessed.includes(snowmanGame.userInput)){
+      return null;
+    } else {
+      snowmanGame.lettersGuessed.push(snowmanGame.userInput);
+      guessedElement.innerText = snowmanGame.lettersGuessed;
+    }
+  },
   handleUserInput: function(event){
     // set keycode to code variable
     let code = event.keyCode;
@@ -77,7 +85,7 @@ let snowmanGame = {
       // if guess is correct, get rid of matched letter in letterOfWord array
       if(guessIndex >= 0){
         // update tries correct
-        snowmanGame.triesCorrect ++;        
+        snowmanGame.triesCorrect ++;  
         // remove guess from letterOfWord array
         snowmanGame.letterOfWord.splice(guessIndex, 1);
         // get the index of the correct letter
@@ -90,6 +98,8 @@ let snowmanGame = {
         snowmanGame.updateMistake();
         // check if game lost
         snowmanGame.gameLoseCheck();
+        // check if incorrect letter is already displyed otherwise render to DOM
+        snowmanGame.checkGuessedLetter();
       }
     }
   },
