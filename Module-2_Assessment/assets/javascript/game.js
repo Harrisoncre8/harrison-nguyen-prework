@@ -49,22 +49,35 @@ let snowmanGame = {
   },
   // updates word as user guesses correctly
   updateRenderWord: function(index, wordParam, renderWordParam){
-    // get correct letter based off of index position within array
+    // array to store positions of same letters in word
+    let letterPositions = []; 
+    // get current guessed letter
     let letter = wordParam[index];
-    // split current renderWord value into array of letters
+   // split current word and renderWord value into array of letters
+    let arrayOfWord = this.word.split('');
     renderWordParam = this.renderWord.split('');
-    // target letter position by index and replace underscore with correct letter
-    renderWordParam[index] = letter;
-    // return string from array
-    this.renderWord = renderWordParam.join('');
-    // update correct words on DOM
+
+    for(let j=0; j<arrayOfWord.length; j++){
+      if(arrayOfWord[j] === letter){
+        letterPositions.push([j]);
+        for(let x=0; x<letterPositions.length; x++){
+          // target letter position by stored positions and replace underscore with correct letter
+          renderWordParam[letterPositions[x]] = letter;
+          // return string from array
+          snowmanGame.renderWord = renderWordParam.join('');          
+        }
+      }
+    }
+    // render letters
     wordElement.innerText = this.renderWord;
+    console.log(this.renderWord.length);
   },
   // subtract from triesRemaining value and render
   updateMistake: function(){
     this.triesRemaining --;
     mistakeElement.innerText = this.triesRemaining;
   },
+  // check if incorrect letter is already displyed otherwise render to DOM
   checkGuessedLetter: function(){
     if(snowmanGame.lettersGuessed.includes(snowmanGame.userInput)){
       return null;
@@ -98,7 +111,7 @@ let snowmanGame = {
         snowmanGame.updateMistake();
         // check if game lost
         snowmanGame.gameLoseCheck();
-        // check if incorrect letter is already displyed otherwise render to DOM
+        // check for letters guessed
         snowmanGame.checkGuessedLetter();
       }
     }
@@ -112,7 +125,7 @@ let snowmanGame = {
   gameWonCheck: function(){
     if(this.triesCorrect === this.renderWord.length){
       console.log('You win!');
-      // play music
+      // play win music
       snowmanGame.wins ++;
       winElement.innerText = snowmanGame.wins;
       snowmanGame.playGame();
