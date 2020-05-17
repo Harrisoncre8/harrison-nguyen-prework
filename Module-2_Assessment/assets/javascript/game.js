@@ -4,6 +4,7 @@ let wordElement = document.querySelector('#currentWord');
 let guessedElement = document.querySelector('#lettersGuessed');
 let mistakeElement = document.querySelector('#guessRemain');
 let winElement = document.querySelector('#win');
+let prevElement = document.querySelector('#previousWord');
 
 // snowman game object
 let snowmanGame = {
@@ -16,6 +17,11 @@ let snowmanGame = {
   userInput: '',   // set to the user's guess letter
   triesRemaining: 10,   // amount of tries the user has attempted 
   wins: 0,   // amount of words the user has solve is set here
+  previousWord: '', // set word from last round here
+  // win/lose messeages to render on condition
+  winMessage: 'Congrats! You built a snowman using the word ',
+  loseMessage: 'Oh no! You melted the snowman with the word ',
+
   
   // reset game
   resetGame: function(){
@@ -51,13 +57,14 @@ let snowmanGame = {
     let letterPositions = []; 
     // get current guessed letter
     let letter = wordParam[index];
-   // split current word and renderWord value into array of letters
+    // split current word and renderWord value into array of letters
     let arrayOfWord = this.word.split('');
     renderWordParam = this.renderWord.split('');
-
+    // loop through selected word to store matched letter positions in array
     for(let j=0; j<arrayOfWord.length; j++){
       if(arrayOfWord[j] === letter){
         letterPositions.push([j]);
+        // loop through letter position array to target specific letter
         for(let x=0; x<letterPositions.length; x++){
           // target letter position by stored positions and replace underscore with correct letter
           renderWordParam[letterPositions[x]] = letter;
@@ -119,8 +126,9 @@ let snowmanGame = {
   },
   gameWonCheck: function(){
     if(this.renderWord.indexOf('_') === -1){
-      console.log('You win!');
       // play win music
+      snowmanGame.previousWord = snowmanGame.winMessage + snowmanGame.word;
+      prevElement.innerText = snowmanGame.previousWord;
       snowmanGame.wins ++;
       winElement.innerText = snowmanGame.wins;
       snowmanGame.playGame();
@@ -129,7 +137,8 @@ let snowmanGame = {
   gameLoseCheck: function(){
     if(this.triesRemaining === 0){
       // play lose music
-      console.log('You lose!');
+      snowmanGame.previousWord = snowmanGame.loseMessage + snowmanGame.word;
+      prevElement.innerText = snowmanGame.previousWord;
       snowmanGame.playGame();
     }
   },
