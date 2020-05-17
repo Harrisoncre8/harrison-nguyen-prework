@@ -35,12 +35,10 @@ let snowmanGame = {
     this.resetGame();
     guessedElement.innerText = snowmanGame.lettersGuessed;
     this.word = this.wordList[ Math.floor(Math.random() * this.wordList.length) ];
-    console.log(this.word);
   },
   // split word into letters within array
   splitWord: function(){
     this.letterOfWord = this.word.split('');
-    console.log(this.letterOfWord);
   },
   // display underscores based on word length, 
   initialRenderWord: function(){
