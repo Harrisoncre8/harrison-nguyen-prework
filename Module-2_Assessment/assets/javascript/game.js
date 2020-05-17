@@ -5,8 +5,8 @@ let guessedElement = document.querySelector('#lettersGuessed');
 
 // snowman game object
 let snowmanGame = {
-  // list of words property 
-  wordList: ['igloo', 'snowflake', 'sled', 'scarf', 'mitten', 'hail', 'olaf', 'chilly'],
+  // list of words property, must be uppercase
+  wordList: ['IGLOO', 'SNOWFLAKE', 'SLED', 'SCRAF', 'MITTEN', 'HAIL', 'OLAF', 'CHILLY'],
   // the selected word is set here
   word: '',
   // letter or underscore is set here
@@ -42,12 +42,14 @@ let snowmanGame = {
     }
   },
   handleUserInput: function(event){
+    // set keycode to code variable
     let code = event.keyCode;
     // validate that the user typed in a letter
     if(code > 64 && code < 91 ){
       // set string of key code to userInput
-      snowmanGame.userInput = String.fromCharCode(code);
-      // let guessIndex = 
+      snowmanGame.userInput = String.fromCharCode(code);  
+      let guessIndex = snowmanGame.letterOfWord.indexOf(snowmanGame.userInput);
+      console.log(guessIndex);
     }
   },
   // method that starts the game
