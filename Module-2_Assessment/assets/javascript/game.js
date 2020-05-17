@@ -3,6 +3,7 @@ let gameElement = document.querySelector('#gamePage');
 let wordElement = document.querySelector('#currentWord');
 let guessedElement = document.querySelector('#lettersGuessed');
 let mistakeElement = document.querySelector('#guessRemain');
+let winElement = document.querySelector('#win');
 
 // snowman game object
 let snowmanGame = {
@@ -64,6 +65,11 @@ let snowmanGame = {
     this.triesRemaining --;
     mistakeElement.innerText = this.triesRemaining;
   },
+  gameLoseCheck: function(){
+    // if(){
+
+    // }
+  },
   handleUserInput: function(event){
     // set keycode to code variable
     let code = event.keyCode;
@@ -76,9 +82,7 @@ let snowmanGame = {
       // if guess is correct, get rid of matched letter in letterOfWord array
       if(guessIndex >= 0){
         // update tries correct
-        snowmanGame.triesCorrect ++;
-        console.log(snowmanGame.triesCorrect);
-        
+        snowmanGame.triesCorrect ++;        
         // remove guess from letterOfWord array
         snowmanGame.letterOfWord.splice(guessIndex, 1);
         // get the index of the correct letter
@@ -90,6 +94,7 @@ let snowmanGame = {
       } else if(guessIndex === -1) {
         snowmanGame.updateMistake();
         // check if game lost
+        snowmanGame.gameLoseCheck();
       }
     }
   },
@@ -103,6 +108,8 @@ let snowmanGame = {
     if(this.triesCorrect === this.renderWord.length){
       console.log('You win!');
       // play music
+      snowmanGame.wins ++;
+      winElement.innerText = snowmanGame.wins;
       snowmanGame.playGame();
     }
   },
