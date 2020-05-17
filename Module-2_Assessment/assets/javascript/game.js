@@ -2,6 +2,7 @@
 let gameElement = document.querySelector('#gamePage');
 let wordElement = document.querySelector('#currentWord');
 let guessedElement = document.querySelector('#lettersGuessed');
+let mistakeElement = document.querySelector('#guessRemain');
 
 // snowman game object
 let snowmanGame = {
@@ -37,8 +38,9 @@ let snowmanGame = {
     for (let i= 0; i<this.letterOfWord.length; i++) { 
       this.renderWord = this.renderWord + '_'
     }
-    // render initial underscore word
+    // render initial underscore word and guesses
     wordElement.innerText = this.renderWord;
+    mistakeElement.innerText = this.triesRemaining;
   },
   // updates word as user guesses correctly
   updateRenderWord: function(index, wordParam, renderWordParam){
@@ -53,6 +55,11 @@ let snowmanGame = {
     // update correct words on DOM
     wordElement.innerText = this.renderWord;
   },
+  // subtract from triesRemaining value and render
+  updateMistake: function(){
+    this.triesRemaining --;
+    mistakeElement.innerText = this.triesRemaining;
+  },
   handleUserInput: function(event){
     // set keycode to code variable
     let code = event.keyCode;
@@ -63,27 +70,26 @@ let snowmanGame = {
       // get index of guess if it matches with letters in word
       let guessIndex = snowmanGame.letterOfWord.indexOf(snowmanGame.userInput);
       // if guess is correct, get rid of matched letter in letterOfWord array
-      if(guessIndex !== -1){
+      if(guessIndex >= 0){
         snowmanGame.letterOfWord.splice(guessIndex, 1);
         // get the index of the correct letter
         let index = snowmanGame.word.indexOf(snowmanGame.userInput);
         // call method to update the word on the DOM
         snowmanGame.updateRenderWord(index, snowmanGame.word, snowmanGame.renderWord);
-      } 
-      // if letter already guessed, it shouldn't count? 
-      // else if(guessIndex === -1) {
-      //   snowmanGame.triesRemaining --;
-      //   console.log(snowmanGame.triesRemaining);
-      // }
+        // check to see if game is won
+      } else if(guessIndex === -1) {
+        snowmanGame.updateMistake();
+        // check if game lost
+      }
     }
   },
-  // method that starts the game
+  // method to play the game
   playGame: function(){
     snowmanGame.selectWord();
     snowmanGame.splitWord();
     snowmanGame.initialRenderWord();
   },
-  // method to start the snowman game and 
+  // method to setup the snowman game and 
   // removes event listener after one user key click
   // user must refresh page to run the key click event listener 
   startGame: function(){
