@@ -1,6 +1,7 @@
 // global variables
 let gameElement = document.querySelector('#gamePage');
 let wordElement = document.querySelector('#currentWord');
+let guessedElement = document.querySelector('#lettersGuessed');
 
 // snowman game object
 let snowmanGame = {
@@ -10,6 +11,8 @@ let snowmanGame = {
   word: '',
   // letter or underscore is set here
   renderWord: '',
+  // help to find index of letters of word
+  letterOfWord: [],
   // incorrect guesses
   lettersGuessed: [],
   // whatever the user types in
@@ -24,14 +27,19 @@ let snowmanGame = {
   // selects random word from wordList and set it to word property
   selectWord: function(){
     this.word = this.wordList[ Math.floor(Math.random() * this.wordList.length) ];
+    console.log(this.word);
+  },
+  // split word into letters within array
+  splitWord: function(){
+    this.letterOfWord = this.word.split('');
+    console.log(this.letterOfWord);
   },
   // display underscores based on word length, 
-  // map through array of letters and use ternery operator
-  // to display letter or underscore based on guess
   updateRenderWord: function(){
-    this.renderWord = this.word.split('').map(
-      letter => (this.lettersGuessed.indexOf(letter) >= 0 ? letter : ' _ ')).join('');
-      wordElement.innerText = this.renderWord;
+    let changeWord = '';
+    for (let i= 0; i<this.word.length; i++) { 
+      changeWord = changeWord + ' _ '
+    }
   },
   handleUserInput: function(event){
     let code = event.keyCode;
@@ -39,18 +47,13 @@ let snowmanGame = {
     if(code > 64 && code < 91 ){
       // set string of key code to userInput
       snowmanGame.userInput = String.fromCharCode(code);
-      // check to see if letter was already guessed
-      snowmanGame.lettersGuessed.indexOf(snowmanGame.userInput) === -1 ? snowmanGame.lettersGuessed.push(snowmanGame.userInput) : null;
-      
-      if(snowmanGame.word.indexOf(snowmanGame.userInput) >= 0){ 
-        snowmanGame.updateRenderWord();
-        // check if meet victory condition
-      }
+      // let guessIndex = 
     }
   },
   // method that starts the game
   playGame: function(){
     snowmanGame.selectWord();
+    snowmanGame.splitWord();
     snowmanGame.updateRenderWord();
   },
   // method to start the snowman game and 
@@ -65,4 +68,5 @@ let snowmanGame = {
 // on any key click, snowman game will start 
 gameElement.addEventListener('keydown', snowmanGame.startGame);      
 
+// page listening for user input
 document.addEventListener('keydown', snowmanGame.handleUserInput);
