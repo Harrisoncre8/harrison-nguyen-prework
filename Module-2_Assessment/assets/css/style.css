@@ -1,3 +1,21 @@
 #currentWord {
   letter-spacing: 1em;
 }
+
+body {
+  background-image: linear-gradient(to right, #59ACD2 , #ACE5EE, #71A6D2);
+  text-align: center;
+  height: 400px;
+  font-family: "Gill Sans", sans-serif;
+  margin: 50px;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  border: 4px dotted white;
+  line-height: 2.5em;
+}
+
+h1 {
+  font-size: xx-large;
+  color: white;
+  margin-bottom: 1em;
+}
