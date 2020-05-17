@@ -1,21 +1,37 @@
-#currentWord {
+/* spacing for game word */
+#currentWord, #lettersGuessed {
   letter-spacing: 1em;
 }
 
+/* set body styling */
 body {
-  background-image: linear-gradient(to right, #59ACD2 , #ACE5EE, #71A6D2);
+  background-color: #ACE5EE;
   text-align: center;
   height: 400px;
   font-family: "Gill Sans", sans-serif;
   margin: 50px;
   padding-top: 2em;
   padding-bottom: 2em;
-  border: 4px dotted white;
+  border: 4px dotted black;
   line-height: 2.5em;
+  background-image: url(../images/snowflake.png);
 }
 
+/* change h1 size and color */
 h1 {
-  font-size: xx-large;
-  color: white;
-  margin-bottom: 1em;
+  font-size: 3em;
+  color: black;
+  font-family: Apple Chancery;
+}
+
+/* adjust all image width */
+img {
+  width: 100px;
+}
+
+/* change snowman image positioning */
+#snowman {
+  position: absolute;
+  bottom: 30%;
+  right: 15%;
 }
