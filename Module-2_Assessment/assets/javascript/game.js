@@ -17,10 +17,8 @@ let snowmanGame = {
   lettersGuessed: [],
   // whatever the user types in
   userInput: '',
-  // set amount of guesses the user has to solve the word
-  totalTries: 8,
   // amount of tries the user has attempted 
-  triesRemaining: 0,
+  triesRemaining: 10,
   // amount of words the user has solve is set here
   wins: 0,
 
@@ -35,11 +33,25 @@ let snowmanGame = {
     console.log(this.letterOfWord);
   },
   // display underscores based on word length, 
-  updateRenderWord: function(){
-    let changeWord = '';
-    for (let i= 0; i<this.word.length; i++) { 
-      changeWord = changeWord + ' _ '
+  initialRenderWord: function(){
+    for (let i= 0; i<this.letterOfWord.length; i++) { 
+      this.renderWord = this.renderWord + '_'
     }
+    // render initial underscore word
+    wordElement.innerText = this.renderWord;
+  },
+  // updates word as user guesses correctly
+  updateRenderWord: function(index, wordParam, renderWordParam){
+    // get correct letter based off of index position within array
+    let letter = wordParam[index];
+    // split current renderWord value into array of letters
+    renderWordParam = this.renderWord.split('');
+    // target letter position by index and replace underscore with correct letter
+    renderWordParam[index] = letter;
+    // return string from array
+    this.renderWord = renderWordParam.join('');
+    // update correct words on DOM
+    wordElement.innerText = this.renderWord;
   },
   handleUserInput: function(event){
     // set keycode to code variable
@@ -47,16 +59,29 @@ let snowmanGame = {
     // validate that the user typed in a letter
     if(code > 64 && code < 91 ){
       // set string of key code to userInput
-      snowmanGame.userInput = String.fromCharCode(code);  
+      snowmanGame.userInput = String.fromCharCode(code); 
+      // get index of guess if it matches with letters in word
       let guessIndex = snowmanGame.letterOfWord.indexOf(snowmanGame.userInput);
-      console.log(guessIndex);
+      // if guess is correct, get rid of matched letter in letterOfWord array
+      if(guessIndex !== -1){
+        snowmanGame.letterOfWord.splice(guessIndex, 1);
+        // get the index of the correct letter
+        let index = snowmanGame.word.indexOf(snowmanGame.userInput);
+        // call method to update the word on the DOM
+        snowmanGame.updateRenderWord(index, snowmanGame.word, snowmanGame.renderWord);
+      } 
+      // if letter already guessed, it shouldn't count? 
+      // else if(guessIndex === -1) {
+      //   snowmanGame.triesRemaining --;
+      //   console.log(snowmanGame.triesRemaining);
+      // }
     }
   },
   // method that starts the game
   playGame: function(){
     snowmanGame.selectWord();
     snowmanGame.splitWord();
-    snowmanGame.updateRenderWord();
+    snowmanGame.initialRenderWord();
   },
   // method to start the snowman game and 
   // removes event listener after one user key click
