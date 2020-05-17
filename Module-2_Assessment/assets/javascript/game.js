@@ -10,12 +10,12 @@ let prevElement = document.querySelector('#previousWord');
 let snowmanGame = {
   // list of words property, must be uppercase
   wordList: ['IGLOO', 'SNOWFLAKE', 'SLED', 'SCRAF', 'MITTEN', 'HAIL', 'OLAF', 'CHILLY'],
-  word: '',   // the selected word is set here
-  renderWord: '',   // letter or underscore is set here
-  letterOfWord: [],   // initial underscore word
-  lettersGuessed: [],   // keep track of letters used
-  userInput: '',   // set to the user's guess letter
-  triesRemaining: 10,   // amount of tries the user has attempted 
+  word: '', // the selected word is set here
+  renderWord: '', // letter or underscore is set here
+  letterOfWord: [], // initial underscore word
+  lettersGuessed: [], // keep track of letters used
+  userInput: '', // set to the user's guess letter
+  triesRemaining: 10, // amount of tries the user has attempted 
   wins: 0,   // amount of words the user has solve is set here
   previousWord: '', // set word from last round here
   // win/lose messeages to render on condition
@@ -26,13 +26,14 @@ let snowmanGame = {
   resetGame: function(){
     this.renderWord = '';
     this.letterOfWord = [];
-    this.lettersGuessed = [];
     this.word = '';
     this.triesRemaining = 10;
+    this.lettersGuessed = [];
   },
   // select random word from wordList and set it to word property
   selectWord: function(){
     this.resetGame();
+    guessedElement.innerText = snowmanGame.lettersGuessed;
     this.word = this.wordList[ Math.floor(Math.random() * this.wordList.length) ];
     console.log(this.word);
   },
@@ -110,10 +111,10 @@ let snowmanGame = {
         snowmanGame.gameWonCheck();
       } else if(guessIndex === -1) {
         snowmanGame.updateMistake();
-        // check if game lost
-        snowmanGame.gameLoseCheck();
         // check for letters guessed
         snowmanGame.checkGuessedLetter();
+        // check if game lost
+        snowmanGame.gameLoseCheck();
       }
     }
   },
